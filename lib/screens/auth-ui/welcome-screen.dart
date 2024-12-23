@@ -1,9 +1,11 @@
 // ignore_for_file: file_names, prefer_const_constructors, avoid_unnecessary_containers, sized_box_for_whitespace
 
+import 'package:ecommerceapp/controllers/google_sign_in_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 class WelcomeScreen extends StatelessWidget{
-  const WelcomeScreen({super.key});
+   WelcomeScreen({super.key});
+  final GoogleSignInController googleSignInController=Get.put(GoogleSignInController());
   
   @override
   Widget build(BuildContext context) {
@@ -41,6 +43,7 @@ class WelcomeScreen extends StatelessWidget{
                 label: Text("Sign in with google",
                 style: TextStyle(fontSize: 20)),
                 onPressed: () {
+                  googleSignInController.signInWithGoogle();
 
                 },
               ),

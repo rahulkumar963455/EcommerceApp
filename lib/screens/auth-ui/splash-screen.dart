@@ -1,8 +1,7 @@
-// ignore_for_file: override_on_non_overriding_member, file_names
+// ignore_for_file: override_on_non_overriding_member, file_names, prefer_const_constructors
 
 import 'dart:async';
-
-import 'package:ecommerceapp/screens/auth-ui/welcome-screen.dart';
+import 'package:ecommerceapp/screens/user-panel/main-screen.dart';
 import 'package:ecommerceapp/utils/app-constant.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -11,7 +10,7 @@ class SplashScreen extends StatefulWidget{
   const SplashScreen({super.key});
 
   @override
-  State<SplashScreen> createState() => _SplashScreenState();
+  State<SplashScreen> createState() => _SplashScreenState(); 
 }
 
 class _SplashScreenState extends State<SplashScreen> {
@@ -20,7 +19,7 @@ class _SplashScreenState extends State<SplashScreen> {
   void initState(){
    super.initState();
    Timer(const Duration(seconds: 3), (){
-   Get.offAll(()=> const WelcomeScreen());
+   Get.offAll(()=>  MainScreen());
     });
   }
 

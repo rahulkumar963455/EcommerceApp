@@ -1,5 +1,5 @@
 import 'package:ecommerceapp/firebase_options.dart';
-import 'package:ecommerceapp/screens/auth-ui/sign_up_screen.dart';
+import 'package:ecommerceapp/screens/user-panel/main-screen.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -26,7 +26,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: const SignupScreen(),
-    );
+      home: const MainScreen()
+   );
   }
 }
