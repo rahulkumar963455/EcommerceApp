@@ -1,91 +1,103 @@
-// ignore_for_file: file_names, prefer_const_constructors, avoid_unnecessary_containers, sized_box_for_whitespace
+// ignore_for_file: file_names, prefer_const_constructors, avoid_unnecessary_containers, prefer_const_literals_to_create_immutables
 
-import 'package:ecommerceapp/controllers/google_sign_in_controller.dart';
+import 'package:ecommerceapp/screens/auth-ui/sign-in-screen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-class WelcomeScreen extends StatelessWidget{
-   WelcomeScreen({super.key});
-  final GoogleSignInController googleSignInController=Get.put(GoogleSignInController());
-  
+import 'package:lottie/lottie.dart';
+import '../../controllers/google-sign-in-controller.dart';
+import '../../utils/app-constant.dart';
+
+class WelcomeScreen extends StatelessWidget {
+  WelcomeScreen({super.key});
+
+  final GoogleSignInController _googleSignInController =
+      Get.put(GoogleSignInController());
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: const Color.fromARGB(255, 243, 14, 71),
-        title: Center(child: Text("Welcome to Shoping app")),
+        elevation: 0,
+        centerTitle: true,
+        backgroundColor: AppConstant.appScendoryColor,
+        title: Text(
+          "Welcome to my app",
+          style: TextStyle(color: AppConstant.appTextColor),
+        ),
       ),
       body: Container(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
-           Container(
-            width: 400,
-            height: 400,
-            child:Image.asset('android/app/assets/images/shoping_image.jpg')
-           ),
-
-           Center(
-             child: SizedBox(
-              height: Get.height/30,
-             ),
-           ),
-           Material(
-            child: Container(
-              width: Get.width/1.2,
-              height: Get.height/12,
-              decoration: BoxDecoration(
-                color: const Color.fromARGB(255, 243, 14, 71),
-                borderRadius: BorderRadius.circular(20)
-              ),
-              child: TextButton.icon(
-                icon:Image.asset('android/app/assets/images/google_icon.jpg',
-                width: Get.width/12, height: Get.height/12,),
-                label: Text("Sign in with google",
-                style: TextStyle(fontSize: 20)),
-                onPressed: () {
-                  googleSignInController.signInWithGoogle();
-
-                },
+            Container(
+              child: Lottie.asset('assets/images/splash-icon.json'),
+            ),
+            Container(
+              margin: EdgeInsets.only(top: 20.0),
+              child: Text(
+                "Shopping",
+                style: TextStyle(
+                  fontSize: 16.0,
+                  fontWeight: FontWeight.bold,
+                ),
               ),
             ),
-           ),
-           Center(
-             child: SizedBox(
-              height: Get.height/20,
-             
-             ),
-           ),
-           Material(
-            child: Container(
-              width: Get.width/1.2,
-              height: Get.height/12,
-              decoration: BoxDecoration(
-                color: const Color.fromARGB(255, 243, 14, 71),
-                 borderRadius: BorderRadius.circular(20)
-              ),
-              child: TextButton.icon(
-                icon:Image.asset('android/app/assets/images/gmail_icon.png',
-                width: Get.width/12, height: Get.height/12,),
-                label: Text("Sign in with gmail",
-                style: TextStyle(fontSize: 20)),
-                onPressed: () {
-
-                },
+            SizedBox(
+              height: Get.height / 12,
+            ),
+            Material(
+              child: Container(
+                width: Get.width / 1.2,
+                height: Get.height / 12,
+                decoration: BoxDecoration(
+                  color: AppConstant.appScendoryColor,
+                  borderRadius: BorderRadius.circular(20.0),
+                ),
+                child: TextButton.icon(
+                  icon: Image.asset(
+                    'assets/images/final-google-logo.png',
+                    width: Get.width / 12,
+                    height: Get.height / 12,
+                  ),
+                  label: Text(
+                    "Sign in with google",
+                    style: TextStyle(color: AppConstant.appTextColor),
+                  ),
+                  onPressed: () {
+                    _googleSignInController.signInWithGoogle();
+                  },
+                ),
               ),
             ),
-           ),
-           Center(
-             child: SizedBox(
-              height: Get.height/15,
-             
-             ),
-           ),
-           Text("Happy Shopping ", style: TextStyle(color: Color.fromARGB(255, 243, 14, 71),
-           fontSize: 25,fontWeight: FontWeight.w600),)
+            SizedBox(
+              height: Get.height / 50,
+            ),
+            Material(
+              child: Container(
+                width: Get.width / 1.2,
+                height: Get.height / 12,
+                decoration: BoxDecoration(
+                  color: AppConstant.appScendoryColor,
+                  borderRadius: BorderRadius.circular(20.0),
+                ),
+                child: TextButton.icon(
+                  icon: Icon(
+                    Icons.email,
+                    color: AppConstant.appTextColor,
+                  ),
+                  label: Text(
+                    "Sign in with email",
+                    style: TextStyle(color: AppConstant.appTextColor),
+                  ),
+                  onPressed: () {
+                    Get.to(() => SignInScreen());
+                  },
+                ),
+              ),
+            )
           ],
         ),
       ),
     );
   }
-
 }
